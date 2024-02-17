@@ -14,13 +14,14 @@ class Weapon:
         武器
     """
 
-    def __init__(self, name, one_damage, shoot_time, capacity, disruptor=0, hammer_point=0):
+    def __init__(self, name, one_damage, shoot_time, capacity, weapon_type, disruptor=0, hammer_point=0):
         self.name = name
         self.one_damage = one_damage
         self.shoot_time = shoot_time
         self.disruptor = disruptor
         self.hammer_point = hammer_point
         self.capacity = capacity
+        self.weapon_type = weapon_type
 
     def comps_damage(self, times, shielded, reduce=0):
         """
@@ -39,32 +40,61 @@ class Weapon:
 
 
 weapon_datas = [
-    Weapon(name="猎兽", one_damage=15, capacity=[20, 25, 30, 35],
+    Weapon(name="猎兽", one_damage=15, weapon_type="冲锋枪", capacity=[20, 25, 30, 35],
            shoot_time=[1, 54, 102, 150, 202, 487, 523, 571, 619, 674, 952, 999, 1056, 1104, 1152, 1418, 1474, 1522,
                        1570,
                        1619, 1902, 1950, 2006, 2054, 2082, 2370, 2418, 2470, 2522, 2570, 2835, 2884, 2938, 2986,
                        3034]),
-    Weapon(name="R99", one_damage=11, capacity=[17, 20, 23, 26],
+    Weapon(name="R99", one_damage=11, weapon_type="冲锋枪", capacity=[17, 20, 23, 26],
            shoot_time=[1, 66, 122, 183, 238, 286, 335, 387, 438, 504, 552, 619, 674, 723, 788, 838, 886, 952, 999,
                        1056, 1123,
                        1171, 1236, 1286, 1334, 1387]),
-    Weapon(name="电冲", one_damage=15, capacity=[19, 21, 23, 26],
+    Weapon(name="电冲", one_damage=15, weapon_type="冲锋枪", capacity=[19, 21, 23, 26],
            shoot_time=[1, 122, 183, 254, 335, 420, 504, 588, 674, 735, 838, 923, 999, 1086, 1171, 1255, 1334, 1418,
                        1502,
                        1585, 1666, 1750, 1838, 1922, 2006, 2082
                        ]),
-    Weapon(name="CAR", one_damage=12, capacity=[19, 21, 23, 26],
+    Weapon(name="CAR", one_damage=12, weapon_type="冲锋枪", capacity=[19, 21, 23, 26],
            shoot_time=[1, 66, 134, 202, 274, 335, 399, 474, 523, 588, 656, 723, 788, 855, 923, 988, 1038, 1104,
                        1171, 1236,
                        1303, 1370, 1434, 1502, 1550, 1619]),
-    Weapon(name="转换者", one_damage=16, disruptor=0.2, capacity=[19, 22, 25, 27],
+    Weapon(name="转换者", one_damage=16, disruptor=0.2, weapon_type="冲锋枪", capacity=[19, 22, 25, 27],
            shoot_time=[1, 102, 202, 304, 399, 504, 599, 703, 814, 904, 1019, 1104, 1207, 1303, 1418, 1502, 1599,
                        1702, 1807,
                        1922, 2018, 2122, 2218, 2303, 2418, 2502, 2618]),
-    Weapon(name="RE45", one_damage=12, hammer_point=0.35, capacity=[16, 19, 22, 25],
+    Weapon(name="RE45", one_damage=12, hammer_point=0.35, weapon_type="冲锋枪", capacity=[16, 19, 22, 25],
            shoot_time=[1, 86, 150, 238, 304, 387, 474, 535, 619, 686, 788, 855, 935, 999, 1086, 1152, 1236, 1322,
                        1387, 1474,
-                       1534, 1619, 1702, 1786, 1854])
+                       1534, 1619, 1702, 1786, 1854]),
+    Weapon(name="R301", one_damage=13, weapon_type="步枪",
+           capacity=[18, 20, 25, 28],
+           shoot_time=[1, 86, 150, 218, 304, 371, 455, 523, 599, 686, 751, 838, 904, 971, 1038, 1104, 1187, 1255, 1322,
+                       1398, 1486, 1550, 1619, 1702, 1771, 1854, 1922, 1986]),
+    Weapon(name="平行步枪", one_damage=18, weapon_type="步枪",
+           capacity=[20, 25, 28, 30],
+           shoot_time=[1, 122, 202, 323, 399, 504, 588, 686, 799, 904,
+                       999, 1086, 1207, 1286, 1398, 1486, 1586, 1702, 1807, 1902,
+                       2006, 2082, 2206, 2282, 2406, 2482, 2606, 2682, 2786, 2884]),
+
+    Weapon(name="汗洛", one_damage=20, weapon_type="步枪",
+           capacity=[18, 23, 27, 30],
+           shoot_time=[1, 66, 134, 399, 474, 535, 814, 886, 952, 1219,
+                       1286, 1350, 1634, 1702, 1750, 2054, 2122, 2170, 2454, 2522,
+                       2587, 2870, 2938, 2986, 3282, 3350, 3418, 3682, 3750, 3818]),
+
+    Weapon(name="喷火", one_damage=18, weapon_type="机枪",
+           capacity=[35, 40, 45, 50],
+           shoot_time=[1, 122, 238, 335, 455, 552, 674, 788, 904, 999,
+                       1123, 1219, 1334, 1454, 1550, 1666, 1786, 1902, 2006, 2103,
+                       2218, 2322, 2434, 2551, 2654, 2770, 2870, 2986, 3102, 3206,
+                       3318, 3434, 3538, 3654, 3767, 3870, 3986, 4102, 4222, 4339,
+                       4454, 4551, 4671, 4787, 4902, 5004, 5119, 5235, 5338, 5450]),
+    Weapon(name="暴走", one_damage=26, weapon_type="机枪",
+           capacity=[28, 32, 34, 40],
+           shoot_time=[15, 203, 395, 594, 795, 1002, 1194, 1398, 1598, 1798,
+                       1998, 2198, 2398, 2600, 2810, 2998, 3210, 3418, 3619, 3819,
+                       4031, 4231, 4431, 4634, 4818, 5018, 5218, 5414, 5616, 5814,
+                       6015, 6216, 6415, 6615, 6815, 7015, 7216, 7416, 7616, 7816]),
 ]
 
 # 根据选中的甲类型重新绘制图表
@@ -88,6 +118,13 @@ capacity_types = [
     "紫"
 ]
 
+weapon_types = [
+    "全部",
+    "冲锋枪",
+    "步枪",
+    "机枪"
+]
+
 
 class TimePointDamage(QMainWindow):
     """
@@ -107,6 +144,12 @@ class TimePointDamage(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
+
+        self.weapon_types_label = QLabel("枪械类型")
+        self.weapon_types_combo = QComboBox(self)
+        for weapon_type in weapon_types:
+            self.weapon_types_combo.addItem(weapon_type)
+
         self.shielded_label = QLabel("护甲品质：")
         self.comboBox = QComboBox(self)
         for shielded_level in shielded_data:
@@ -130,6 +173,8 @@ class TimePointDamage(QMainWindow):
         # 布局设置
         layout = QVBoxLayout()
         param_layout = QHBoxLayout()
+        param_layout.addWidget(self.weapon_types_label)
+        param_layout.addWidget(self.weapon_types_combo)
         param_layout.addWidget(self.shielded_label)
         param_layout.addWidget(self.comboBox)
         param_layout.addWidget(self.legend_types_label)
@@ -156,8 +201,10 @@ class TimePointDamage(QMainWindow):
         legend_type = self.legend_types_combo.currentText()
         early_termination = self.early_termination_check.isChecked()
         capacity_type_index = self.capacity_types_combo.currentIndex()
+        weapon_type = self.weapon_types_combo.currentText()
         result = self.plot_data(shielded=shielded_data[selected_shield], reduce=legend_types[legend_type],
-                                early_termination=early_termination, capacity_type_index=capacity_type_index)
+                                early_termination=early_termination, capacity_type_index=capacity_type_index,
+                                weapon_type=weapon_type)
         self.dte = DynamicTableExample(result)
         self.dte.show()
 
@@ -175,7 +222,7 @@ class TimePointDamage(QMainWindow):
         self.canvas = FigureCanvas(self.figure)
         self.canvas.mpl_connect('pick_event', self.on_pick)
 
-    def plot_data(self, shielded, reduce=0, early_termination=False, capacity_type_index=3):
+    def plot_data(self, shielded, weapon_type, reduce=0, early_termination=False, capacity_type_index=3):
         """
             输出数据
         """
@@ -199,8 +246,13 @@ class TimePointDamage(QMainWindow):
         y_max = 0
         self.lines = []  # 清空保存的图形对象引用
         result = {}
-        for weapon_data in weapon_datas:
-            weapon_type = weapon_data.name
+        if weapon_type != "全部":
+            weapon_type_datas = [weapon_data for weapon_data in weapon_datas if weapon_data.weapon_type == weapon_type]
+        else:
+            weapon_type_datas = weapon_datas
+
+        for weapon_data in weapon_type_datas:
+            weapon_name = weapon_data.name
             capacity = weapon_data.capacity[capacity_type_index]
 
             shoot_time = []
@@ -212,7 +264,7 @@ class TimePointDamage(QMainWindow):
                 one_damage = weapon_data.comps_damage(times=i + 1, shielded=shielded_health, reduce=reduce)
                 shoot_time.append(weapon_data.shoot_time[i])
                 damage_values.append(one_damage)
-                if one_damage > shielded_health + 100:
+                if one_damage >= shielded_health + 100:
                     if kill_moment is None:
                         kill_moment = {"count": i + 1, "time": weapon_data.shoot_time[i], "damage": one_damage}
                     if early_termination:
@@ -222,7 +274,7 @@ class TimePointDamage(QMainWindow):
             y_max_t = max(damage_values)
             x_max = max(x_max_t, x_max)
             y_max = max(y_max_t, y_max)
-            line, = self.ax.plot(shoot_time, damage_values, marker='o', linestyle='-', label=weapon_type, markersize=4)
+            line, = self.ax.plot(shoot_time, damage_values, marker='o', linestyle='-', label=weapon_name, markersize=4)
             line.set_pickradius(1)  # 设置选择半径，避免过于敏感
             line.set_picker(True)  # 启用 picker
             self.lines.append(line)  # 保存图形对象引用
@@ -237,7 +289,7 @@ class TimePointDamage(QMainWindow):
                 result_item["kill_damage"] = kill_moment["damage"]
             else:
                 result_item["is_kill"] = False
-            result[weapon_type] = result_item
+            result[weapon_name] = result_item
 
         self.ax.plot([0, x_max], [shielded_health + 100, shielded_health + 100], marker='o', linestyle='-',
                      color=shielded_color,
