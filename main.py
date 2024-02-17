@@ -8,6 +8,8 @@ from matplotlib.backend_bases import PickEvent
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.ticker import MultipleLocator
 
+from DisclaimerWindow import DisclaimerWindow
+
 
 class Weapon:
     """
@@ -122,7 +124,7 @@ weapon_datas = [
            shoot_time=[1, 170, 323, 474, 619, 771, 923, 1056, 1207, 1350,
                        1502, 1642, 1807, 1934, 2103, 2235, 2386, 2551, 2682, 2835,
                        2986, 3138, 3282, 3434, 3587, 3739, 3882, 4035, 4154, 4339,
-                       4848, 4623, 4787, 4938, 5090, 5223, 5367, 5518, 5696, 5898]),
+                       4548, 4623, 4787, 4938, 5090, 5223, 5367, 5518, 5696, 5898]),
 
     Weapon(name="lstar", one_damage=17, weapon_type="机枪",
            capacity=[25, 27, 29, 31],
@@ -454,6 +456,7 @@ def main():
     """
     app = QApplication(sys.argv)
     frame_monitor = TimePointDamage()
+    dsw = DisclaimerWindow(frame_monitor)
     frame_monitor.show()
     sys.exit(app.exec_())
 
